@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Booking App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="header-content">
+                <h1 v-text="sitename"></h1>
+                <button @click="toggleShowProduct" :disabled="cart.length === 0 && showProduct" class="action-button">
+                    {{ totalItemsInTheCart }}
+                    <span class="fas fa-shopping-cart"></span> Cart
+                </button>
+            </div>
+        </header>
+
+        <div v-if="showProduct">
+            <main>
+                <!-- Sorting Controls -->
+                <div class="checkout-section">
+                    <h2>Sort Lessons</h2>
+                    <label for="sortKey">Sort by:</label>
+                    <select v-model="sortKey" id="sortKey">
+                        <option value="price">Price</option>
+                        <option value="topic">Topic</option>
+                        <option value="location">Location</option>
+                        <option value="availableSpaces">Spaces</option>
+                    </select>
+
+                    <label for="sortOrder">Order:</label>
+                    <select v-model="sortOrder" id="sortOrder">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+                <br>
+
+                <!-- Loop through sortedLessons instead of lessons -->
+                <div v-for="lesson in sortedLessons" :key="lesson.id" class="lesson">
+                    <img :src="lesson.image" :alt="lesson.title">
+                    <div class="lesson-info">
+                        <h1>{{ lesson.topic }}</h1>
+                        <p>{{ lesson.description }}</p>
+                        <p>Location: {{ lesson.location }}</p>
+                        <p>Price: £{{ lesson.price }}</p>
+                        <p>Spaces Available: {{ lesson.availableSpaces - cartCount(lesson.id) }}</p>
+
+                        <div class="button-container">
+                            <button v-if="canAddToCart(lesson)" @click="addToCart(lesson)" class="action-button">Book a
+                                Space</button>
+                            <button v-else disabled class="disabled-button">No Spaces Left</button>
+
+                            <!-- Logic to display availability messages -->
+                            <p v-if="lesson.availableSpaces - cartCount(lesson.id) === 0">All out!</p>
+                            <p v-else-if="lesson.availableSpaces - cartCount(lesson.id) < 5">Only {{
+                                lesson.availableSpaces - cartCount(lesson.id) }} left!</p>
+                            <p v-else>Buy now!</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div v-if="!showProduct">
+            <div class="checkout-section">
+                <h1>Checkout Page</h1>
+                <div class="checkout-section">
+                    <h2>Your Cart</h2>
+                    <div v-if="cart.length > 0">
+                        <ul>
+                            <li v-for="lesson in cartItems" :key="lesson.id" class="cart-item">
+                                {{ lesson.title }} - £{{ lesson.price }} - {{ cartCount(lesson.id) }} booked space(s)
+                                <button @click="removeFromCart(lesson)" class="action-button">Remove</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-else>
+                        <p>Your cart is empty.</p>
+                    </div>
+                </div>
+
+                <div class="checkout-section">
+                    <h2>Checkout Details</h2>
+                    <form @submit.prevent="placeOrder">
+                        <div>
+                            <label for="firstName">First Name:</label>
+                            <input type="text" v-model.trim="firstName" id="firstName" @input="validateName" required>
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" v-model.trim="lastName" id="lastName" @input="validateName" required>
+                        </div>
+                        <div>
+                            <label for="phoneNumber">Phone Number:</label>
+                            <input type="text" v-model="phoneNumber" id="phoneNumber" @input="validatePhone" required>
+                        </div>
+                        <button type="submit" :disabled="!canCheckout" class="action-button">Place Order</button>
+                    </form>
+                </div>
+
+                <div class="checkout-section">
+                    <h3>Review Your Details:</h3>
+                    <p><strong>Full Name:</strong> {{ firstName }} {{ lastName }}</p>
+                    <p><strong>Phone Number:</strong> {{ phoneNumber }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="functionality.js"></script>
+</body>
+
+</html>

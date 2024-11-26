@@ -1,0 +1,183 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header Layout */
+header {
+    background: #515151;
+    border: 1px solid #000000;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    color: red;
+}
+
+header button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+header .fa-shopping-cart {
+    margin-right: 8px;
+}
+
+header button:disabled {
+    background-color: #ccc;
+}
+
+/* Lesson Container */
+.lesson {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Lesson Image */
+.lesson img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+/* Lesson Details */
+.lesson-details {
+    flex-grow: 1;
+    min-width: 200px;
+    /* Ensure it doesn't get too small */
+}
+
+/* Lesson Title */
+.lesson-details h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Consistent Button Styling */
+.action-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;
+    margin-right: 10px;
+    /* Adds space between buttons */
+}
+
+button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Disabled Button */
+.disabled-button {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: not-allowed;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    align-items: center;
+    /* Aligns items vertically in the center */
+    margin-top: 10px;
+    /* Adds some space above the button and text */
+}
+
+.button-container button {
+    margin-right: 10px;
+    /* Adds space between the button and the text */
+}
+
+/* Lesson Availability Text */
+.button-container p {
+    margin: 0;
+    /* Remove default margin to align better */
+}
+
+/* Checkout Page Styles */
+.checkout-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* Add space between cart items */
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+form input {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
