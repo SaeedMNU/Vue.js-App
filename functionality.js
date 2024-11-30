@@ -9,7 +9,8 @@ let webstore = new Vue({
         sortOrder: 'asc',
         firstName: '',
         lastName: '',
-        phoneNumber: ''
+        phoneNumber: '',
+        searchQuery: ''
     },
     created: function () {
         this.fetchLessons();
@@ -22,6 +23,15 @@ let webstore = new Vue({
                 this.lessons = lessons;
             } catch (error) {
                 console.error("Error fetching lessons:", error);
+            }
+        },
+        async searchLessons() {
+            try {
+                const response = await fetch(`http://localhost:3000/search?q=${this.searchQuery}`);
+                const lessons = await response.json();
+                this.lessons = lessons;
+            } catch (error) {
+                console.error("Error searching lessons:", error);
             }
         },
         addToCart(lesson) {

@@ -27,7 +27,11 @@
                 <!-- Sorting Controls -->
                 <div class="checkout-section">
                     <h2>Filter Lessons</h2>
-                    <label for="sortKey">Sort by:</label>
+                    
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" v-model="searchQuery" @input="searchLessons">
+                    
+                    <label for="sortKey"> & Sort by:</label>
                     <select v-model="sortKey" id="sortKey">
                         <option value="price">Price</option>
                         <option value="topic">Topic</option>
@@ -43,12 +47,11 @@
                 </div>
                 <br>
 
-                <!-- Loop through sortedLessons instead of lessons -->
+                <!-- Loop through sortedLessons -->
                 <div v-for="lesson in sortedLessons" :key="lesson.id" class="lesson">
                     <img :src="lesson.image" :alt="lesson.title">
                     <div class="lesson-info">
                         <h1>{{ lesson.topic }}</h1>
-                        <p>{{ lesson.description }}</p>
                         <p>Location: {{ lesson.location }}</p>
                         <p>Price: £{{ lesson.price }}</p>
                         <p>Spaces Available: {{ lesson.availableSpaces - cartCount(lesson.id) }}</p>
