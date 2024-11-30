@@ -53,7 +53,7 @@ let webstore = new Vue({
             return phonePattern.test(this.phoneNumber);
         },
         async placeOrder() {
-            // To ensures no duplicate orders are created for the same lesson
+            // To ensure no duplicate orders are created for the same lesson
             const lessonOrders = {};
 
             try {
@@ -68,9 +68,9 @@ let webstore = new Vue({
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify({
+                                body: JSON.stringify({ // Define body of order
                                     id: lesson.id,
-                                    bookedSpaces: this.cartCount(lesson.id), // Number of booked spaces for this lesson
+                                    bookedSpaces: this.cartCount(lesson.id),
                                     name: `${this.firstName} ${this.lastName}`,
                                     phoneNum: this.phoneNumber
                                 })
@@ -126,8 +126,7 @@ let webstore = new Vue({
                 // If sortKey is price or availableSpaces, it sorts the lessons numerically.
                 if (this.sortKey === 'price' || this.sortKey === 'availableSpaces') {
                     return (a[this.sortKey] - b[this.sortKey]) * modifier;
-                    // Else sortKey is topic or location, it sorts the lessons alphabetically using localeCompare.
-                } else {
+                } else { // Else sortKey is topic or location, it sorts the lessons alphabetically using localeCompare.
                     return a[this.sortKey].localeCompare(b[this.sortKey]) * modifier;
                 }
             });
