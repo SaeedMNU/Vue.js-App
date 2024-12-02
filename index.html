@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson Booking App</title>
+    <!-- Relevant links to used libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
@@ -12,7 +13,7 @@
 
 <body>
     <div id="app">
-        <header>
+        <header> <!-- Website header -->
             <div class="header-content">
                 <h1 v-text="sitename"></h1>
                 <button @click="toggleShowProduct" :disabled="cart.length === 0 && showProduct" class="action-button">
@@ -22,9 +23,10 @@
             </div>
         </header>
 
+        <!-- Product page content -->
         <div v-if="showProduct">
             <main>
-                <!-- Sorting Controls -->
+                <!-- Sort/Filter Controls -->
                 <div class="checkout-section">
                     <h2>Filter Lessons</h2>
                     
@@ -72,7 +74,7 @@
             </main>
         </div>
 
-        <div v-if="!showProduct">
+        <div v-if="!showProduct"> <!-- Checkout page content -->
             <div class="checkout-section">
                 <h1>Checkout Page</h1>
                 <div class="checkout-section">
@@ -119,7 +121,7 @@
 
     </div>
 
-    <script src="functionality.js"></script>
+    <script src="functionality.js"></script> <!-- Link to vue.js functionality -->
 </body>
 
 </html>
