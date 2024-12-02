@@ -1,11 +1,11 @@
-/* General Reset */
+/* General reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Body Style */
+/* Body style */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -14,7 +14,7 @@ body {
     padding: 20px;
 }
 
-/* Header Layout */
+/* Header layout */
 header {
     background: #515151;
     border: 1px solid #000000;
@@ -23,12 +23,14 @@ header {
     margin-bottom: 20px;
 }
 
+/* Header formatting */
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Header h1 specific styling */
 header h1 {
     font-size: 2em;
     font-weight: bold;
@@ -36,6 +38,7 @@ header h1 {
     color: red;
 }
 
+/* Header button specific styling */
 header button {
     background-color: red;
     color: white;
@@ -49,15 +52,17 @@ header button {
     border-radius: 10px;
 }
 
+/* Cart button specific styling */
 header .fa-shopping-cart {
     margin-right: 8px;
 }
 
+/* Disabled cart button styling */
 header button:disabled {
     background-color: #ccc;
 }
 
-/* Lesson Container */
+/* Lesson container styling */
 .lesson {
     display: flex;
     align-items: flex-start;
@@ -70,7 +75,7 @@ header button:disabled {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Lesson Image */
+/* Lesson image styling */
 .lesson img {
     width: 150px;
     height: 150px;
@@ -79,13 +84,13 @@ header button:disabled {
     border-radius: 10px;
 }
 
-/* Lesson Details */
+/* Lesson details styling */
 .lesson-details {
     flex-grow: 1;
     min-width: 200px;
 }
 
-/* Lesson Title */
+/* Lesson title styling */
 .lesson-details h1 {
     font-size: 1.5em;
     margin-bottom: 10px;
@@ -93,7 +98,7 @@ header button:disabled {
     color: #333;
 }
 
-/* Consistent Button Styling */
+/* Universal button styling */
 .action-button {
     background-color: red;
     color: white;
@@ -106,12 +111,13 @@ header button:disabled {
     margin-right: 10px;
 }
 
+/* Default disabled button styling */
 button[disabled] {
     background-color: #ccc;
     cursor: not-allowed;
 }
 
-/* Disabled Button */
+/* Disabled button styling */
 .disabled-button {
     background-color: #ccc;
     color: #fff;
@@ -123,23 +129,24 @@ button[disabled] {
     cursor: not-allowed;
 }
 
-/* Button Container */
+/* Button container styling */
 .button-container {
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
 
+/* Button container specific button styling */
 .button-container button {
     margin-right: 10px;
 }
 
-/* Lesson Availability Text */
+/* Lesson availability text styling */
 .button-container p {
     margin: 0;
 }
 
-/* Checkout Page Styles */
+/* Checkout page styles */
 .checkout-section {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -149,6 +156,7 @@ button[disabled] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Per cart item styling */
 .cart-item {
     display: flex;
     justify-content: space-between;
@@ -157,15 +165,17 @@ button[disabled] {
     margin-bottom: 10px;
 }
 
-/* Form Styles */
+/* Checkout page form styles */
 form {
     margin-top: 20px;
 }
 
+/* Form div specific styling */
 form div {
     margin-bottom: 10px;
 }
 
+/* Form input/placeholder specific styling */
 form input {
     padding: 10px;
     width: 100%;
