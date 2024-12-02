@@ -83,7 +83,6 @@ header button:disabled {
 .lesson-details {
     flex-grow: 1;
     min-width: 200px;
-    /* Ensure it doesn't get too small */
 }
 
 /* Lesson Title */
@@ -105,7 +104,6 @@ header button:disabled {
     text-align: center;
     border-radius: 10px;
     margin-right: 10px;
-    /* Adds space between buttons */
 }
 
 button[disabled] {
@@ -129,20 +127,16 @@ button[disabled] {
 .button-container {
     display: flex;
     align-items: center;
-    /* Aligns items vertically in the center */
     margin-top: 10px;
-    /* Adds some space above the button and text */
 }
 
 .button-container button {
     margin-right: 10px;
-    /* Adds space between the button and the text */
 }
 
 /* Lesson Availability Text */
 .button-container p {
     margin: 0;
-    /* Remove default margin to align better */
 }
 
 /* Checkout Page Styles */
@@ -161,7 +155,6 @@ button[disabled] {
     align-items: center;
     padding: 10px;
     margin-bottom: 10px;
-    /* Add space between cart items */
 }
 
 /* Form Styles */
