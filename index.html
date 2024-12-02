@@ -16,6 +16,7 @@
         <header> <!-- Website header -->
             <div class="header-content">
                 <h1 v-text="sitename"></h1>
+                <!-- Cart button to toggle between pages & dynamically display cart item count -->
                 <button @click="toggleShowProduct" :disabled="cart.length === 0 && showProduct" class="action-button">
                     {{ totalItemsInTheCart }}
                     <span class="fas fa-shopping-cart"></span> Cart
@@ -30,9 +31,11 @@
                 <div class="checkout-section">
                     <h2>Filter Lessons</h2>
                     
+                    <!-- Dynamic search functionality -->
                     <label for="search">Search:</label>
                     <input type="text" id="search" v-model="searchQuery" @input="searchLessons">
                     
+                    <!-- Sort functionality (dropdown menu) -->
                     <label for="sortKey"> & Sort by:</label>
                     <select v-model="sortKey" id="sortKey">
                         <option value="price">Price</option>
@@ -41,6 +44,7 @@
                         <option value="availableSpaces">Spaces</option>
                     </select>
 
+                    <!-- Sort functionality asc/desc -->
                     <label for="sortOrder">Order:</label>
                     <select v-model="sortOrder" id="sortOrder">
                         <option value="asc">Ascending</option>
@@ -49,8 +53,9 @@
                 </div>
                 <br>
 
-                <!-- Loop through sortedLessons -->
+                <!-- Loop through sortedLessons using v-for -->
                 <div v-for="lesson in sortedLessons" :key="lesson.id" class="lesson">
+                    <!-- Lesson layout -->
                     <img :src="lesson.image" :alt="lesson.title">
                     <div class="lesson-info">
                         <h1>{{ lesson.topic }}</h1>
@@ -58,6 +63,7 @@
                         <p>Price: £{{ lesson.price }}</p>
                         <p>Spaces Available: {{ lesson.availableSpaces - cartCount(lesson.id) }}</p>
 
+                        <!-- Book lesson spaces button -->
                         <div class="button-container">
                             <button v-if="canAddToCart(lesson)" @click="addToCart(lesson)" class="action-button">Book a
                                 Space</button>
@@ -74,15 +80,19 @@
             </main>
         </div>
 
-        <div v-if="!showProduct"> <!-- Checkout page content -->
+        <!-- Checkout page content -->
+        <div v-if="!showProduct">
             <div class="checkout-section">
                 <h1>Checkout Page</h1>
                 <div class="checkout-section">
                     <h2>Your Cart</h2>
+
+                    <!-- Display contents of booked spaces in lesson(s) -->
                     <div v-if="cart.length > 0">
                         <ul>
                             <li v-for="lesson in cartItems" :key="lesson.id" class="cart-item">
                                 {{ lesson.topic }} - £{{ lesson.price }} - {{ cartCount(lesson.id) }} booked space(s)
+                                <!-- Remove a booked lesson space button -->
                                 <button @click="removeFromCart(lesson)" class="action-button">Remove</button>
                             </li>
                         </ul>
@@ -92,6 +102,7 @@
                     </div>
                 </div>
 
+                <!-- Checkout details form -->
                 <div class="checkout-section">
                     <h2>Checkout Details</h2>
                     <form @submit.prevent="placeOrder">
@@ -107,10 +118,12 @@
                             <label for="phoneNumber">Phone Number:</label>
                             <input type="text" v-model="phoneNumber" id="phoneNumber" @input="validatePhone" required>
                         </div>
+                        <!-- Validated button to place an order -->
                         <button type="submit" :disabled="!canCheckout" class="action-button">Place Order</button>
                     </form>
                 </div>
 
+                <!-- Returns the given user information -->
                 <div class="checkout-section">
                     <h3>Review Your Details:</h3>
                     <p><strong>Full Name:</strong> {{ firstName }} {{ lastName }}</p>
